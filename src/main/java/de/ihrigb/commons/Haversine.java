@@ -2,6 +2,10 @@ package de.ihrigb.commons;
 
 final class Haversine {
 
+	static Distance distance(double latStart, double lngStart, double latEnd, double lngEnd) {
+		return distance(new LatLng(latStart, lngStart), new LatLng(latEnd, lngEnd));
+	}
+
 	static Distance distance(LatLng start, LatLng end) {
 		final double dLat = end.getRadians().getLatitude() - start.getRadians().getLatitude();
 		final double dLng = end.getRadians().getLongitude() - start.getRadians().getLongitude();

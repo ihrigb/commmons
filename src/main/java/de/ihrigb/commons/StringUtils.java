@@ -21,6 +21,14 @@ public final class StringUtils {
 		return false;
 	}
 
+	public static boolean hasText(String text) {
+		if (text == null) {
+			return false;
+		}
+		text = text.trim();
+		return !"".equals(text);
+	}
+
 	private StringUtils() {
 	}
 }

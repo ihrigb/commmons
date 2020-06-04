@@ -2,7 +2,7 @@ package de.ihrigb.commons;
 
 import java.util.function.Function;
 
-public final class Distance {
+public final class Distance implements Comparable<Distance> {
 
 	public static Distance of(double value, Unit unit) {
 		if (unit == null) {
@@ -72,6 +72,44 @@ public final class Distance {
 		this.meters = meters;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Distance)) {
+			return false;
+		}
+		Distance o = (Distance) obj;
+		return this.compareTo(o) == 0;
+	}
+
+	@Override
+	public int hashCode() {
+		return Double.valueOf(this.meters).hashCode();
+	}
+
+	@Override
+	public int compareTo(Distance o) {
+		return Double.valueOf(this.meters).compareTo(Double.valueOf(o.meters));
+	}
+
+	public boolean isGreater(Distance d) {
+		return this.compareTo(d) > 0;
+	}
+
+	public boolean isGreaterOrEqual(Distance d) {
+		return this.compareTo(d) >= 0;
+	}
+
+	public boolean isLess(Distance d) {
+		return this.compareTo(d) < 0;
+	}
+
+	public boolean isLessOrEqual(Distance d) {
+		return this.compareTo(d) <= 0;
+	}
+
 	public Distance add(Distance d) {
 		return new Distance(this.meters + d.meters);
 	}
@@ -92,6 +130,18 @@ public final class Distance {
 			throw new IllegalArgumentException("Divisors for Distance division must not be negative.");
 		}
 		return new Distance(this.meters / divisor);
+	}
+
+	public String toString(Unit unit) {
+		if (unit == null) {
+			throw new IllegalArgumentException("Unit must not be null.");
+		}
+		return unit.format(this.meters);
+	}
+
+	@Override
+	public String toString() {
+		return this.toString(Unit.METER);
 	}
 
 	public double get(Unit unit) {
@@ -154,37 +204,56 @@ public final class Distance {
 	}
 
 	public static final class Unit {
-		public final static Unit NANOMETER = new Unit(DecimalPowers.NANO);
-		public final static Unit MICROMETER = new Unit(DecimalPowers.MICRO);
-		public final static Unit MILLIMETER = new Unit(DecimalPowers.MILLI);
-		public final static Unit CENTIMETER = new Unit(DecimalPowers.CENTI);
-		public final static Unit DECIMETER = new Unit(DecimalPowers.DECI);
-		public final static Unit METER = new Unit(DecimalPowers.ONE);
-		public final static Unit DECAMETER = new Unit(DecimalPowers.DECA);
-		public final static Unit HECTOMETER = new Unit(DecimalPowers.HECTO);
-		public final static Unit KILOMETER = new Unit(DecimalPowers.KILO);
+		public final static Unit NANOMETER = new Unit(DecimalPowers.NANO, "nm");
+		public final static Unit MICROMETER = new Unit(DecimalPowers.MICRO, "μm");
+		public final static Unit MILLIMETER = new Unit(DecimalPowers.MILLI, "mm");
+		public final static Unit CENTIMETER = new Unit(DecimalPowers.CENTI, "cm");
+		public final static Unit DECIMETER = new Unit(DecimalPowers.DECI, "dm");
+		public final static Unit METER = new Unit(DecimalPowers.ONE, "m");
+		public final static Unit DECAMETER = new Unit(DecimalPowers.DECA, "dam");
+		public final static Unit HECTOMETER = new Unit(DecimalPowers.HECTO, "hm");
+		public final static Unit KILOMETER = new Unit(DecimalPowers.KILO, "km");
 
-		public final static Unit INCH = new Unit(v -> v / 39.37, v -> v * 39.37);
-		public final static Unit FEET = new Unit(v -> v / 3.2808, v -> v * 3.2808);
-		public final static Unit YARD = new Unit(v -> v / 1.0936, v -> v * 1.0936);
-		public final static Unit MILE = new Unit(v -> v / 0.00062137, v -> v * 0.00062137);
+		public final static Unit INCH = new Unit(v -> v / 39.37, v -> v * 39.37, "in");
+		public final static Unit FEET = new Unit(v -> v / 3.2808, v -> v * 3.2808, "ft");
+		public final static Unit YARD = new Unit(v -> v / 1.0936, v -> v * 1.0936, "yd");
+		public final static Unit MILE = new Unit(v -> v / 0.00062137, v -> v * 0.00062137, "mi");
 
 		private final Function<Double, Double> toMetersFunction;
 		private final Function<Double, Double> fromMetersFunction;
+		private final String sign;
 
-		public Unit(DecimalPowers decimalPowers) {
-			this(decimalPowers::multiply, decimalPowers::divide);
+		public Unit(DecimalPowers decimalPowers, String sign) {
+			this(decimalPowers::multiply, decimalPowers::divide, sign);
 		}
 
-		public Unit(Function<Double, Double> toMetersFunction, Function<Double, Double> fromMetersFunction) {
+		public Unit(Function<Double, Double> toMetersFunction, Function<Double, Double> fromMetersFunction, String sign) {
 			if (toMetersFunction == null) {
 				throw new IllegalArgumentException("toMetersFunction must not be null.");
 			}
 			if (fromMetersFunction == null) {
 				throw new IllegalArgumentException("fromMetersFunction must not be null.");
 			}
+			if (!StringUtils.hasText(sign)) {
+				throw new IllegalArgumentException("Sign must have text.");
+			}
 			this.toMetersFunction = toMetersFunction;
 			this.fromMetersFunction = fromMetersFunction;
+			this.sign = sign;
+		}
+
+		public String getSign() {
+			return this.sign;
+		}
+
+		public String format(double value) {
+			value = this.fromMetersFunction.apply(value);
+			return String.format("%f %s", value, this.getSign());
+		}
+
+		@Override
+		public String toString() {
+			return this.sign;
 		}
 	}
 }
