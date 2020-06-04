@@ -17,9 +17,5 @@ public class DistanceTest {
 				() -> Assertions.assertEquals(.2d, d2m.getDecameter(), 0.0000001d),
 				() -> Assertions.assertEquals(.02d, d2m.getHectometer(), 0.0000001d),
 				() -> Assertions.assertEquals(.002d, d2m.getKilometer(), 0.0000001d));
-
-		Assertions.assertAll(() -> Assertions.assertEquals("2.000000 m", d2m.toString()),
-				() -> Assertions.assertEquals("200.000000 cm", d2m.toString(Unit.CENTIMETER)),
-				() -> Assertions.assertEquals("0.002000 km", d2m.toString(Unit.KILOMETER)));
 	}
 }
