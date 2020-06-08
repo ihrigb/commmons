@@ -2,8 +2,19 @@ package de.ihrigb.commons;
 
 import java.util.Collection;
 
+/**
+ * Utils to handle strings.
+ */
 public final class StringUtils {
 
+	/**
+	 * Checks if a collection of strings contains a certain value, ignoring case.
+	 *
+	 * @param col    collection to be checked
+	 * @param needle needle to be searched ignoring case
+	 * @return true, if case-ignored needle is contained; also returns true, if
+	 *         needle is null and collection contains null
+	 */
 	public static boolean containsIgnoreCase(Collection<String> col, String needle) {
 		if (col == null) {
 			return false;
@@ -21,6 +32,13 @@ public final class StringUtils {
 		return false;
 	}
 
+	/**
+	 * Check if a string contains any characters and is not empty after default
+	 * trim. Null is considered false.
+	 *
+	 * @param text text to be checked
+	 * @return if contains any characters that are not blank.
+	 */
 	public static boolean hasText(String text) {
 		if (text == null) {
 			return false;

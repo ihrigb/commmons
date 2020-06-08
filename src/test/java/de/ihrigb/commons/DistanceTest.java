@@ -3,8 +3,6 @@ package de.ihrigb.commons;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import de.ihrigb.commons.Distance.Unit;
-
 public class DistanceTest {
 
 	@Test

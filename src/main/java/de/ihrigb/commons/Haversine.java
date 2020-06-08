@@ -1,12 +1,31 @@
 package de.ihrigb.commons;
 
-final class Haversine {
+/**
+ * Utils to calculate haversine distances of two points on earth (WGS84).
+ */
+public final class Haversine {
 
-	static Distance distance(double latStart, double lngStart, double latEnd, double lngEnd) {
+	/**
+	 * Calculate haversine distance.
+	 *
+	 * @param latStart start latitude
+	 * @param lngStart start longitude
+	 * @param latEnd   end latitude
+	 * @param lngEnd   end longitude
+	 * @return distance between two points
+	 */
+	public static Distance distance(double latStart, double lngStart, double latEnd, double lngEnd) {
 		return distance(new LatLng(latStart, lngStart), new LatLng(latEnd, lngEnd));
 	}
 
-	static Distance distance(LatLng start, LatLng end) {
+	/**
+	 * Calculate haversine distance.
+	 *
+	 * @param start start LatLng
+	 * @param end   end LatLng
+	 * @return distance between two points
+	 */
+	public static Distance distance(LatLng start, LatLng end) {
 		final double dLat = end.getRadians().getLatitude() - start.getRadians().getLatitude();
 		final double dLng = end.getRadians().getLongitude() - start.getRadians().getLongitude();
 
