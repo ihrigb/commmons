@@ -29,7 +29,7 @@ public abstract class Unit {
 	 * @param unitPrefix the unit prefix
 	 */
 	protected Unit(String sign, UnitPrefix unitPrefix) {
-		this(sign, unitPrefix::multiply, unitPrefix::divide);
+		this(sign, v -> unitPrefix.multiply(v), v -> unitPrefix.divide(v));
 	}
 
 	/**
