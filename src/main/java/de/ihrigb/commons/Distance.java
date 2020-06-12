@@ -25,6 +25,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a nanometer value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofNanometer(double value) {
 		return Distance.of(value, DistanceUnit.NANOMETER);
@@ -34,6 +35,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a micrometer value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofMicrometer(double value) {
 		return Distance.of(value, DistanceUnit.MICROMETER);
@@ -43,6 +45,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a millimeter value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofMillimeter(double value) {
 		return Distance.of(value, DistanceUnit.MILLIMETER);
@@ -52,6 +55,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a centimeter value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofCentimeter(double value) {
 		return Distance.of(value, DistanceUnit.CENTIMETER);
@@ -61,6 +65,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a decimeter value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofDecimeter(double value) {
 		return Distance.of(value, DistanceUnit.DECIMETER);
@@ -70,6 +75,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a meter value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofMeter(double value) {
 		return Distance.of(value, DistanceUnit.METER);
@@ -79,6 +85,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a decameter value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofDecameter(double value) {
 		return Distance.of(value, DistanceUnit.DECAMETER);
@@ -88,6 +95,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a hectometer value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofHectometer(double value) {
 		return Distance.of(value, DistanceUnit.HECTOMETER);
@@ -97,6 +105,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a kilometer value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofKilometer(double value) {
 		return Distance.of(value, DistanceUnit.KILOMETER);
@@ -106,6 +115,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a inch value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofInch(double value) {
 		return Distance.of(value, DistanceUnit.INCH);
@@ -115,6 +125,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a feet value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofFeet(double value) {
 		return Distance.of(value, DistanceUnit.FEET);
@@ -124,6 +135,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a yard value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofYard(double value) {
 		return Distance.of(value, DistanceUnit.YARD);
@@ -133,6 +145,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a mile value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofMile(double value) {
 		return Distance.of(value, DistanceUnit.MILE);
@@ -142,6 +155,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Create a distance of a nautical mile value.
 	 *
 	 * @param value the value
+	 * @return instance of distance
 	 */
 	public static Distance ofNauticalMile(double value) {
 		return Distance.of(value, DistanceUnit.NAUTICAL_MILE);
@@ -247,7 +261,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 	 * Divides this distance by a divisor and returns the result. Leaves this
 	 * distance unchanged.
 	 *
-	 * @param factor divisor to divide the distance
+	 * @param divisor divisor to divide the distance
 	 * @return new divided distance
 	 */
 	public Distance divide(double divisor) {

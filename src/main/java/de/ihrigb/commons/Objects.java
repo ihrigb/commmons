@@ -13,8 +13,8 @@ public final class Objects {
 	 *
 	 * @param obj0 first object
 	 * @param obj1 second object
-	 * @return true if both values are equals (also for obj0 == null && obj1 ==
-	 *         null)
+	 * @return true if both values are equals (also for obj0 == null &amp;&amp; obj1
+	 *         == null)
 	 */
 	public static boolean equals(Object obj0, Object obj1) {
 		if (obj0 == null && obj1 == null) {

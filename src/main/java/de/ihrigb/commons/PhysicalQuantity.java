@@ -50,7 +50,7 @@ public abstract class PhysicalQuantity<T extends Unit> {
 	 * Format the physical quantity based on a unit.
 	 *
 	 * @param unit unit to be formatted
-	 * @return '<value under unit> <unit sign>'
+	 * @return '&lt;value under unit&gt; &lt;unit sign&gt;'
 	 */
 	public String toString(T unit) {
 		if (unit == null) {
