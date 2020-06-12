@@ -29,7 +29,18 @@ public abstract class Unit {
 	 * @param unitPrefix the unit prefix
 	 */
 	protected Unit(String sign, UnitPrefix unitPrefix) {
-		this(sign, v -> unitPrefix.multiply(v), v -> unitPrefix.divide(v));
+		// TODO remove anoying fix
+		this(sign, new Function<Double, Double>() {
+			@Override
+			public Double apply(Double t) {
+				return unitPrefix.multiply(t);
+			}
+		}, new Function<Double, Double>() {
+			@Override
+			public Double apply(Double t) {
+				return unitPrefix.divide(t);
+			}
+		});
 	}
 
 	/**
