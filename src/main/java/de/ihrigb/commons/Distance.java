@@ -435,7 +435,7 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 		/**
 		 * SI Unit of Distance.
 		 */
-		public final static DistanceUnit METER = new DistanceUnit("m");
+		public final static DistanceUnit METER = new DistanceUnit();
 
 		/**
 		 * 1 dam = 10<sup>1</sup> m
@@ -479,11 +479,9 @@ public final class Distance extends PhysicalQuantity<Distance.DistanceUnit> impl
 
 		/**
 		 * Constructs the distance SI unit.
-		 *
-		 * @param sign
 		 */
-		private DistanceUnit(String sign) {
-			super(sign);
+		private DistanceUnit() {
+			super("m");
 		}
 
 		/**
