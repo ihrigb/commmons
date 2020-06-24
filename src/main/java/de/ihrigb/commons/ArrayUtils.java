@@ -20,7 +20,7 @@ public final class ArrayUtils {
 	 */
 	public static <T> Optional<Integer> optionalIndexOf(T[] array, T needle) {
 		if (array == null || array.length == 0) {
-			Optional.empty();
+			return Optional.empty();
 		}
 
 		for (int i = 0; i < array.length; i++) {
