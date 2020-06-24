@@ -35,4 +35,20 @@ public class StringUtilsTest {
 		Assertions.assertFalse(StringUtils.containsIgnoreCase(Arrays.asList("value1", "value2"), "value3"),
 				"containsIgnoreCase should return true.");
 	}
+
+	@Test
+	public void testConcat() throws Exception {
+		Assertions.assertAll(() -> Assertions.assertNull(StringUtils.concat((String[]) null)),
+				() -> Assertions.assertEquals("str1", StringUtils.concat("str1")),
+				() -> Assertions.assertEquals("str1str2", StringUtils.concat("str1", "str2")));
+	}
+
+	@Test
+	public void testMerge() throws Exception {
+		Assertions.assertAll(() -> Assertions.assertNull(StringUtils.merge(",", (String[]) null)),
+				() -> Assertions.assertEquals("str1", StringUtils.merge(null, "str1")),
+				() -> Assertions.assertEquals("str1str2", StringUtils.merge(null, "str1", "str2")),
+				() -> Assertions.assertEquals("str1", StringUtils.merge(",", "str1")),
+				() -> Assertions.assertEquals("str1,str2", StringUtils.merge(",", "str1", "str2")));
+	}
 }

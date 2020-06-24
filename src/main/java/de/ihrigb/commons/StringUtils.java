@@ -47,6 +47,50 @@ public final class StringUtils {
 		return !"".equals(text);
 	}
 
+	/**
+	 * Concats multiple strings.
+	 *
+	 * @param strings strings to be concatenated.
+	 * @return concatenated string
+	 */
+	public static String concat(String... strings) {
+		if (strings == null) {
+			return null;
+		}
+
+		String res = "";
+		for (String s : strings) {
+			res += s;
+		}
+		return res;
+	}
+
+	/**
+	 * Merges multiple strings with a delimiter.
+	 *
+	 * @param delim   delimiter
+	 * @param strings strings to be merged around a delimiter
+	 * @return merged string
+	 */
+	public static String merge(String delim, String... strings) {
+		if (delim == null) {
+			return StringUtils.concat(strings);
+		}
+
+		if (strings == null) {
+			return null;
+		}
+
+		String res = "";
+		for (int i = 0; i < strings.length; i++) {
+			res = StringUtils.concat(res, strings[i]);
+			if (i < strings.length - 1) {
+				res = StringUtils.concat(res, delim);
+			}
+		}
+		return res;
+	}
+
 	private StringUtils() {
 	}
 }
